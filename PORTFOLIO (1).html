@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Midhun Raj | Portfolio</title>
+
+  <!-- AOS Animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <!-- Elegant Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Kanit', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #D9E9CF, #B6CEB4, #96A78D);
+      color: #1A1A1A;
+      scroll-behavior: smooth;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* Header */
+    header {
+      position: fixed;
+      left: 0; top: 0;
+      width: 240px; height: 100vh;
+      background: rgba(150, 167, 141, 0.95);
+      display: flex; flex-direction: column; align-items: center;
+      padding: 30px 20px;
+      box-shadow: 2px 0 15px rgba(0,0,0,0.25);
+      z-index: 1000;
+    }
+
+    header h1 {
+      color: #F0F0F0;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex; flex-direction: column; width: 100%;
+    }
+
+    nav a {
+      color: #F0F0F0;
+      margin: 15px 0;
+      font-size: 1.1rem;
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #B6CEB4;
+      color: #2C2C2C;
+      font-weight: 600;
+    }
+
+    /* Resume Button */
+    .resume-btn {
+      position: fixed;
+      top: 20px; right: 30px;
+      background-color: #96A78D;
+      color: #F0F0F0;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1100;
+      border: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+
+    .resume-btn:hover {
+      background-color: #7E8F74;
+      transform: scale(1.05);
+    }
+
+    main {
+      margin-left: 240px;
+      padding: 50px 30px;
+    }
+
+    section {
+      position: relative;
+      padding: 100px 20px;
+      max-width: 1000px;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    /* Section Titles */
+    h2 {
+      position: relative;
+      color: #2C2C2C;
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    h2::before {
+      content: attr(data-shadow);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 5rem;
+      color: rgba(44, 44, 44, 0.05);
+      font-weight: 700;
+      letter-spacing: 5px;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    /* Home Section */
+    #home {
+      height: 100vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+    }
+
+    #home h1 {
+      font-size: 2.8rem;
+      color: #2C2C2C;
+      margin-bottom: 10px;
+    }
+
+    #home span {
+      color: #4A5D3B;
+      font-weight: 600;
+    }
+
+    #home h2 {
+      color: #3C3C3C;
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+
+    #home p {
+      color: #333;
+      max-width: 550px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .skill {
+      background: rgba(240, 240, 240, 0.7);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      font-weight: 500;
+      color: #2C2C2C;
+      transition: 0.3s;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .skill:hover {
+      background-color: #B6CEB4;
+      color: #1A1A1A;
+    }
+
+    /* Card Style */
+    .card {
+      background: rgba(240, 240, 240, 0.85);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      color: #2C2C2C;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      background-color: #D9E9CF;
+      transform: translateY(-5px);
+    }
+
+    .card a {
+      color: #4A5D3B;
+      font-weight: 600;
+    }
+
+    /* Form */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    input, textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #B6CEB4;
+      background: rgba(255, 255, 255, 0.7);
+      color: #1A1A1A;
+      font-size: 1rem;
+    }
+
+    input:focus, textarea:focus {
+      outline: 2px solid #96A78D;
+    }
+
+    button {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background-color: #96A78D;
+      color: #F0F0F0;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #7E8F74;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      color: #2C2C2C;
+      background-color: rgba(150, 167, 141, 0.2);
+      border-top: 2px solid #96A78D;
+    }
+
+    @media(max-width: 768px) {
+      header {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 20px;
+      }
+
+      nav { flex-direction: row; flex-wrap: wrap; }
+      main { margin-left: 0; padding-top: 80px; }
+      .resume-btn { right: 15px; top: 15px; font-size: 0.9rem; padding: 8px 14px; }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="https://drive.google.com/file/d/1582t-Lk6WVra-2XRYhw8ElCdiOT5YtIO/view?usp=drivesdk" target="_blank" class="resume-btn" id="resumeBtn">📄 View Resume</a>
+
+  <header data-aos="fade-right">
+    <h1>Midhun Raj</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" data-aos="fade-up">
+      <p class="intro-tag">HELLO!</p>
+      <h1>I'm <span>Midhun Raj</span></h1>
+      <h2><span id="typed"></span></h2>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" data-aos="fade-up">
+      <h2 data-shadow="ABOUT">About Me</h2>
+      <p>
+        I am a BCA student with a passion for cybersecurity and ethical hacking, currently gaining
+        real-world experience through both academics and part-time work. Alongside my studies, I work at Wow! Momo,
+        where I have developed strong customer service, teamwork, and time management skills.
+      </p><br>
+      <p>
+        My key interests include Ethical Hacking, Cybersecurity, AI-powered Assistants, Automation,
+        Web and App Development, and Networking. I enjoy building mini-projects, bots, and web apps
+        while continuously learning new technologies.
+      </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" data-aos="fade-up">
+      <h2 data-shadow="SKILLS">Top Skills</h2>
+      <div class="skills-grid">
+        <div class="skill">C Programming</div>
+        <div class="skill">C++ Programming</div>
+        <div class="skill">Python</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Cybersecurity</div>
+        <div class="skill">OOP Concepts</div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" data-aos="fade-up">
+      <h2 data-shadow="EXPERIENCE">Experience</h2>
+      <div class="card">
+        <h3>Team Member – Wow! Momo</h3>
+        <p>Jan 2025 – Present | India</p>
+        <a href="https://drive.google.com/file/d/1Cjpyoj66lu67Ri2YntedhaKU8KKSuQ_O/view?usp=drive_link">WOW!Momo (PDF)</a>
+        <ul>
+          <li>Assisted customers with menu selection and excellent service.</li>
+          <li>Handled billing and cash transactions efficiently.</li>
+          <li>Developed multitasking and time management in a team setting.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Organizer – BattleX 2.0</h3>
+        <p>Jul 2025 | India</p>
+        <a href="#">BattleX 2.0 (PDF)</a>
+        <ul>
+          <li>Organized a large-scale technical and gaming event with 100+ participants.</li>
+          <li>Handled registrations, scheduling, and coordination efficiently.</li>
+          <li>Ensured seamless event execution and engagement.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" data-aos="fade-up">
+      <h2 data-shadow="EDUCATION">Education</h2>
+      <div class="card">
+        <h3>GVHSS Chettiyankinar, Kerala</h3>
+        <p>Computer Science <br> 2021 - 2024</p>
+      </div>
+      <div class="card">
+        <h3>Srinivas Institute of Technology, Mangalore</h3>
+        <p>Bachelor of Computer Application (AWS Cloud, Data Analytics & AI) <br> 2024 - Present</p>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section id="certificates" data-aos="fade-up">
+      <h2 data-shadow="CERTIFICATES">Certifications</h2>
+      <div class="card">
+        <ul>
+          <li><a href="https://drive.google.com/file/d/1h3PNntoGmAo4Oi_3lFNxUpw3VQGP1XqK/view?usp=drive_link">TCS iON Career Edge - IT Primer (PDF)</a></li>
+          <li><a href="https://drive.google.com/file/d/1SIvkcnOl2bu6fy_zY9FJlAMV9DkV9JKC/view?usp=drivesdk">Introduction to AI (PDF)</a></li>
+          <li><a href="https://drive.google.com/file/d/1CNeBzXiUmqg3aARWoUiTyWrKVzUBggKs/view?usp=drive_link">C++ Programming (PDF)</a></li>
+          <li><a href="https://drive.google.com/file/d/1f5v8cKbM093U0yvOrY4DQLl2zD3C0X_E/view?usp=drive_link">JavaScript Algorithms and Data Structures (PDF)</a></li>
+          <li><a href="#">App Building with AppSheet (PDF)</a></li>
+          <li><a href="#">BigQuery and Firebase (PDF)</a></li>
+          <li><a href="https://drive.google.com/file/d/1zZN_i65hzvXDr6DHc7GbeauLynHJ8G1U/view?usp=drive_link">Programming in C (PDF)</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" data-aos="fade-up">
+      <h2 data-shadow="CONTACT">Contact Me</h2>
+      <form action="https://formspree.io/f/xandnqdk" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <p style="text-align:center; margin-top:20px;">
+        ✉️ <b><a href="mailto:miidhunraj@gmail.com" style="color:#4A5D3B;">miidhunraj@gmail.com</a><br>
+        🔗 <a href="https://www.linkedin.com/in/midhunraj06" target="_blank" style="color:#4A5D3B;">LinkedIn</a> </b>
+        | <b> <a href="https://github.com/miidhunraj" target="_blank" style="color:#4A5D3B;">GitHub</a></b>
+
+      </p>
+    </section>
+
+    <footer data-aos="fade-up">
+      <p>© 2025 Midhun Raj</p>
+    </footer>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    // Typing effect
+    new Typed("#typed", {
+      strings: ["Student", "Cybersecurity Enthusiast", "Web Developer", "Tech Learner"],
+      typeSpeed: 60,
+      backSpeed: 40,
+      loop: true
+    });
+
+    // Fade Resume Button
+    const resumeBtn = document.getElementById('resumeBtn');
+    window.addEventListener('scroll', () => {
+      resumeBtn.style.opacity = window.scrollY > 100 ? '0' : '1';
+    });
+  </script>
+</body>
+</html>
